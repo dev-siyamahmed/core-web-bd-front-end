@@ -14,7 +14,7 @@ function App() {
         <Outlet />
       </div>
 
-      <AllUsers />
+      {/* <AllUsers /> */}
       <Toaster/>
     </div>
   );

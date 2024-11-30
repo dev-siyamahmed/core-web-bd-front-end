@@ -13,13 +13,39 @@ export default function AllUsers() {
     const [selectedUser, setSelectedUser] = useState(null); // Selected user data
 
     // Fetch users on component mount
+    // const fetchUsers = async () => {
+    //     setLoading(true);
+
+    //     try {
+            
+    //         const response = await axiosPublic.get('/users');
+    //         setUsers(response.data.data || []);
+    //     } catch (error) {
+    //         console.error('Error fetching users:', error);
+    //         setError('Failed to fetch users');
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
+
+
     const fetchUsers = async () => {
         setLoading(true);
-
+    
         try {
-            
-            const response = await axiosPublic.get('/users');
-            setUsers(response.data.data || []);
+            const response = await fetch('https://core-web-bd-task-backend.vercel.app/api/v1/users', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to fetch users');
+            }
+    
+            const data = await response.json();
+            setUsers(data.data || []);
         } catch (error) {
             console.error('Error fetching users:', error);
             setError('Failed to fetch users');
@@ -27,6 +53,7 @@ export default function AllUsers() {
             setLoading(false);
         }
     };
+    
 
 
     useEffect(() => {
