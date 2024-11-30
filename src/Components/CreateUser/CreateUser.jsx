@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
-import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import useAxiosPublic from '../../Hooks/useAxiosPublic'
 
@@ -13,7 +12,7 @@ export default function CreateUser() {
   const [passwordVisible, setPasswordVisible] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const navigate = useNavigate()
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,17 +28,11 @@ export default function CreateUser() {
 
     try {
 
-      const response = 
-      // local
-      await axiosPublic.post('/create-user', { user })
+      const response = await axiosPublic.post('/create-user', { user })
 
-      // deployment
-      // await axiosPublic.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
 
-    
       if (response.data) {
         toast.success('Balance updated successfully!');
-        navigate('/all-users')
       }
 
     } catch (err) {

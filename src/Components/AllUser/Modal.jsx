@@ -25,13 +25,7 @@ export default function Modal({ user, closeModal, refreshUsers }) {
         try {
             // Make API request to update balance
 
-            // local
-            const response = 
-            await axiosPublic.patch(`/users/${user._id}/balance`, { balance });
-
-            // deployment
-            // const response =
-            //     await axiosPublic.patch(`/users/${user._id}/balance`, { balance });
+            const response = await axiosPublic.patch(`/users/${user._id}/balance`, { balance });
 
             if (response.data) {
                 toast.success('Balance updated successfully!');

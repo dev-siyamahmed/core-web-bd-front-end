@@ -17,11 +17,8 @@ export default function AllUsers() {
         setLoading(true);
 
         try {
-            // local
+            
             const response = await axiosPublic.get('/users');
-
-            // deployment
-            // const response = await axiosPublic.get('/users');
             setUsers(response.data.data || []);
         } catch (error) {
             console.error('Error fetching users:', error);

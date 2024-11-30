@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./shared/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
+import AllUsers from "./Components/AllUser/AllUsers";
 
 
 
@@ -12,6 +13,8 @@ function App() {
       <div className="px-4 py-2">
         <Outlet />
       </div>
+
+      <AllUsers />
       <Toaster/>
     </div>
   );
