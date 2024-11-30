@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 export default function Modal({ user, closeModal, refreshUsers }) {
-    const [balance, setBalance] = useState(user?.balance); 
+    const [balance, setBalance] = useState(user?.balance);
 
     // Reset balance state
     useEffect(() => {
@@ -18,13 +18,18 @@ export default function Modal({ user, closeModal, refreshUsers }) {
         // Validate balance
         if (balance < 0) {
             toast.error('Balance cannot be negative!');
-            return; 
+            return;
         }
         try {
             // Make API request to update balance
-            const response = 
-            await axios.patch(`https://core-web-bd-task-backend.vercel.app/api/v1/users/${user._id}/balance`, { balance });
+
+            // local
+            // const response = 
             // await axios.patch(`http://localhost:5000/api/v1/users/${user._id}/balance`, { balance });
+
+            // deployment
+            const response =
+                await axios.patch(`https://core-web-bd-task-backend.vercel.app/api/v1/users/${user._id}/balance`, { balance });
 
             if (response.data) {
                 toast.success('Balance updated successfully!');

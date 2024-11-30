@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Modal from './Modal';
+import Modal from "../AllUser/Modal"
+
 
 export default function AllUsers() {
     const [users, setUsers] = useState([]); // Store all users
@@ -14,6 +15,10 @@ export default function AllUsers() {
         setLoading(true);
 
         try {
+            // local
+            // const response = await axios.get('http://localhost:5000/api/v1/users');
+
+            // deployment
             const response = await axios.get('https://core-web-bd-task-backend.vercel.app/api/v1/users');
             setUsers(response.data.data || []);
         } catch (error) {

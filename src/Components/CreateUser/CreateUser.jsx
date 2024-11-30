@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 export default function CreateUser() {
   const [username, setUsername] = useState('')
@@ -26,12 +27,16 @@ export default function CreateUser() {
 
     try {
 
-      // const response = 
-      // await axios.post('http://localhost:5000/api/v1/create-user', { user })
+      const response = 
+      // local
+      await axios.post('http://localhost:5000/api/v1/create-user', { user })
 
-      const response = await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user });
+      // deployment
+      await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
 
+    
       if (response.data) {
+        toast.success('Balance updated successfully!');
         navigate('/users')
       }
 
