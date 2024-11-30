@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./shared/Navbar/Navbar";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -11,6 +12,7 @@ function App() {
       <div className="px-4 py-2">
         <Outlet />
       </div>
+      <Toaster/>
     </div>
   );
 }
