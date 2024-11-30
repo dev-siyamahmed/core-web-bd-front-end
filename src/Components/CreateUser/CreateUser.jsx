@@ -1,22 +1,50 @@
 import React, { useState } from 'react'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function CreateUser() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [passwordVisible, setPasswordVisible] = useState(false) 
+  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Add form submission logic here
+
+    setLoading(true)
+    setError('')
+
+    const user = {
+      username,
+      email,
+      password,
+    }
+
+    try {
+
+      const response = await axios.post('http://localhost:5000/api/v1/create-user', { user })
+
+      if (response.data) {
+        navigate('/all-users')
+      }
+
+    } catch (err) {
+      console.error('Error creating user:', err)
+      setError('Failed to create user. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
-    <div className=" bg-gray-50 flex items-center justify-center px-2 sm:px-3 lg:px-8 lg:py-6 md:py-6 py-4 ">
+    <div className="bg-gray-50 flex items-center justify-center px-2 sm:px-3 lg:px-8 lg:py-6 md:py-6 py-4">
       <div className="bg-white md:p-8 p-4 rounded-xl shadow-2xl w-full sm:max-w-md">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Create Your Account</h2>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="mb-5">
             <label htmlFor="username" className="block text-md font-medium text-gray-600">Username</label>
@@ -67,11 +95,15 @@ export default function CreateUser() {
             </button>
           </div>
 
+          {/* Error message */}
+          {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
+
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white p-3 rounded-lg mt-4 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out"
+            className={`w-full bg-indigo-600 text-white p-3 rounded-lg mt-4 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={loading} // Disable button while loading
           >
-            Create Account
+            {loading ? 'Creating Account...' : 'Create Account'}
           </button>
         </form>
 
