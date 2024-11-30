@@ -27,11 +27,9 @@ export default function CreateUser() {
     try {
 
       // const response = 
-      // await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
       // await axios.post('http://localhost:5000/api/v1/create-user', { user })
 
       const response = await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user });
-
 
       if (response.data) {
         navigate('/users')
@@ -82,7 +80,7 @@ export default function CreateUser() {
           <div className="mb-6 relative">
             <label htmlFor="password" className="block text-md font-medium text-gray-600">Password</label>
             <input
-              type={passwordVisible ? 'text' : 'password'} 
+              type={passwordVisible ? 'text' : 'password'}
               id="password"
               name="password"
               value={password}
@@ -106,7 +104,7 @@ export default function CreateUser() {
           <button
             type="submit"
             className={`w-full bg-indigo-600 text-white p-3 rounded-lg mt-4 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-            disabled={loading} 
+            disabled={loading}
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </button>
