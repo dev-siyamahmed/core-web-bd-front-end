@@ -18,7 +18,7 @@ const routers = createBrowserRouter([
         element: <CreateUser />
       },
       {
-        path: "/allUsers",
+        path: "/users",
         element: <AllUsers />
       },
 

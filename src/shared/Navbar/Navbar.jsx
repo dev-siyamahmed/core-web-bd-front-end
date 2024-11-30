@@ -8,7 +8,7 @@ export default function Navbar() {
     const menuRef = useRef(null); 
     const navLinks = [
         { name: "Create User", path: "/" },
-        { name: "User List", path: "/allUsers" },
+        { name: "User List", path: "/users" },
     ];
 
     // Close the menu if a click happens outside the mobile menu
