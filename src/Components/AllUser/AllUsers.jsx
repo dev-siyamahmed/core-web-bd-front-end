@@ -21,7 +21,7 @@ export default function AllUsers() {
             // const response = await axiosPublic.get('http://localhost:5000/api/v1/users');
 
             // deployment
-            const response = await axiosPublic.get('https://core-web-bd-task-backend.vercel.app/api/v1/users');
+            const response = await axiosPublic.get('/users');
             setUsers(response.data.data || []);
         } catch (error) {
             console.error('Error fetching users:', error);

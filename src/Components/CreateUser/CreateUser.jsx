@@ -39,7 +39,7 @@ export default function CreateUser() {
     
       if (response.data) {
         toast.success('Balance updated successfully!');
-        navigate('/users')
+        navigate('/all-users')
       }
 
     } catch (err) {

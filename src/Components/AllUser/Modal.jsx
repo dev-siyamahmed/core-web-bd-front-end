@@ -31,7 +31,7 @@ export default function Modal({ user, closeModal, refreshUsers }) {
 
             // deployment
             const response =
-                await axiosPublic.patch(`https://core-web-bd-task-backend.vercel.app/api/v1/users/${user._id}/balance`, { balance });
+                await axiosPublic.patch(`/users/${user._id}/balance`, { balance });
 
             if (response.data) {
                 toast.success('Balance updated successfully!');
