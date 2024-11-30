@@ -7,7 +7,7 @@ export default function Navbar() {
     const location = useLocation();
     const menuRef = useRef(null); 
     const navLinks = [
-        { name: "Create User", path: "/create-user" },
+        { name: "Create User", path: "/" },
         { name: "User List", path: "/all-users" },
     ];
 

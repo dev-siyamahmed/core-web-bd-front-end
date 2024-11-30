@@ -7,8 +7,6 @@ import CreateUser from './Components/CreateUser/CreateUser';
 import AllUsers from './Components/AllUsers/AllUsers';
 
 
-
-
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -16,7 +14,7 @@ const routers = createBrowserRouter([
     errorElement: <div>error</div>,
     children: [
       {
-        path: "/create-user",
+        path: "/",
         element: <CreateUser />
       },
       {

@@ -13,6 +13,7 @@ export default function AllUsers() {
     const fetchUsers = () => {
         setLoading(true);
         axios.get('https://core-web-bd-task-backend.vercel.app/api/v1/users')
+        // axios.get('http://localhost:5000/api/v1/users')
             .then((response) => {
                 setUsers(response.data.data || []);
                 setLoading(false);
