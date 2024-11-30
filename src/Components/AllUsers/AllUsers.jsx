@@ -10,19 +10,20 @@ export default function AllUsers() {
     const [selectedUser, setSelectedUser] = useState(null); // Selected user data
 
     // Fetch users on component mount
-    const fetchUsers = () => {
+    const fetchUsers = async () => {
         setLoading(true);
-        axios.get('https://core-web-bd-task-backend.vercel.app/api/v1/users')
-        // axios.get('http://localhost:5000/api/v1/users')
-            .then((response) => {
-                setUsers(response.data.data || []);
-                setLoading(false);
-            })
-            .catch(() => {
-                setError('Failed to fetch users');
-                setLoading(false);
-            });
-    };
+      
+        try {
+          const response = await axios.get('https://core-web-bd-task-backend.vercel.app/api/v1/users');
+          setUsers(response.data.data || []);
+        } catch (error) {
+          console.error('Error fetching users:', error);
+          setError('Failed to fetch users');
+        } finally {
+          setLoading(false);
+        }
+      };
+      
 
     useEffect(() => {
         fetchUsers(); 

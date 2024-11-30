@@ -26,9 +26,12 @@ export default function CreateUser() {
 
     try {
 
-      const response = 
-      await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
+      // const response = 
+      // await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
       // await axios.post('http://localhost:5000/api/v1/create-user', { user })
+
+      const response = await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user });
+
 
       if (response.data) {
         navigate('/all-users')
