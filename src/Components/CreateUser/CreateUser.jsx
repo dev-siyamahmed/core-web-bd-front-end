@@ -34,7 +34,7 @@ export default function CreateUser() {
 
 
       if (response.data) {
-        navigate('/all-users')
+        navigate('/allUsers')
       }
 
     } catch (err) {

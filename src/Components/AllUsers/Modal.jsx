@@ -26,8 +26,6 @@ export default function Modal({ user, closeModal, refreshUsers }) {
             await axios.patch(`https://core-web-bd-task-backend.vercel.app/api/v1/users/${user._id}/balance`, { balance });
             // await axios.patch(`http://localhost:5000/api/v1/users/${user._id}/balance`, { balance });
 
-            console.log(response.data);
-
             if (response.data) {
                 toast.success('Balance updated successfully!');
                 refreshUsers(); // Refresh users list in parent component
