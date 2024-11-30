@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
+import useAxiosPublic from '../../Hooks/useAxiosPublic'
 
 export default function CreateUser() {
+
+  const axiosPublic = useAxiosPublic()
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -29,10 +31,10 @@ export default function CreateUser() {
 
       const response = 
       // local
-      await axios.post('http://localhost:5000/api/v1/create-user', { user })
+      // await axiosPublic.post('http://localhost:5000/api/v1/create-user', { user })
 
       // deployment
-      await axios.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
+      await axiosPublic.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
 
     
       if (response.data) {

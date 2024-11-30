@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 export default function Modal({ user, closeModal, refreshUsers }) {
+
+    const axiosPublic = useAxiosPublic()
     const [balance, setBalance] = useState(user?.balance);
 
     // Reset balance state
@@ -25,11 +27,11 @@ export default function Modal({ user, closeModal, refreshUsers }) {
 
             // local
             // const response = 
-            // await axios.patch(`http://localhost:5000/api/v1/users/${user._id}/balance`, { balance });
+            // await axiosPublic.patch(`http://localhost:5000/api/v1/users/${user._id}/balance`, { balance });
 
             // deployment
             const response =
-                await axios.patch(`https://core-web-bd-task-backend.vercel.app/api/v1/users/${user._id}/balance`, { balance });
+                await axiosPublic.patch(`https://core-web-bd-task-backend.vercel.app/api/v1/users/${user._id}/balance`, { balance });
 
             if (response.data) {
                 toast.success('Balance updated successfully!');

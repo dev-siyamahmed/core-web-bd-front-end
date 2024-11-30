@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Modal from "../AllUser/Modal"
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 
 export default function AllUsers() {
+
+    const axiosPublic = useAxiosPublic()
     const [users, setUsers] = useState([]); // Store all users
     const [loading, setLoading] = useState(true); // Loading state
     const [error, setError] = useState(null); // Error state
@@ -16,10 +18,10 @@ export default function AllUsers() {
 
         try {
             // local
-            // const response = await axios.get('http://localhost:5000/api/v1/users');
+            // const response = await axiosPublic.get('http://localhost:5000/api/v1/users');
 
             // deployment
-            const response = await axios.get('https://core-web-bd-task-backend.vercel.app/api/v1/users');
+            const response = await axiosPublic.get('https://core-web-bd-task-backend.vercel.app/api/v1/users');
             setUsers(response.data.data || []);
         } catch (error) {
             console.error('Error fetching users:', error);
