@@ -31,10 +31,10 @@ export default function CreateUser() {
 
       const response = 
       // local
-      // await axiosPublic.post('http://localhost:5000/api/v1/create-user', { user })
+      await axiosPublic.post('/create-user', { user })
 
       // deployment
-      await axiosPublic.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
+      // await axiosPublic.post('https://core-web-bd-task-backend.vercel.app/api/v1/create-user', { user })
 
     
       if (response.data) {
@@ -53,7 +53,7 @@ export default function CreateUser() {
   return (
     <div className="bg-gray-50 flex items-center justify-center px-2 sm:px-3 lg:px-8 lg:py-6 md:py-6 py-4">
       <div className="bg-white md:p-8 p-4 rounded-xl shadow-2xl w-full sm:max-w-md">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Create Your Account</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Create Your Account cvcxv</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-5">

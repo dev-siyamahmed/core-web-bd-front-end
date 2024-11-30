@@ -18,10 +18,10 @@ export default function AllUsers() {
 
         try {
             // local
-            // const response = await axiosPublic.get('http://localhost:5000/api/v1/users');
+            const response = await axiosPublic.get('/users');
 
             // deployment
-            const response = await axiosPublic.get('/users');
+            // const response = await axiosPublic.get('/users');
             setUsers(response.data.data || []);
         } catch (error) {
             console.error('Error fetching users:', error);
